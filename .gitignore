@@ -20,6 +20,7 @@ wheels/
 .installed.cfg
 *.egg
 MANIFEST
+.gitignore
 
 # Virtual environments
 venv/
@@ -46,9 +47,7 @@ ENV/
 .env.*.local
 
 # Excel files (data)
-data/*.xlsx
-data/*.xls
-data/*.xlsm
+
 !data/.gitkeep
 
 # Streamlit
