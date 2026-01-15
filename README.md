@@ -219,10 +219,3 @@ Los logs se almacenan en `logs/pharma_ai_YYYY-MM-DD.log` con:
 4. Ejecutar linting: `black . && isort . && mypy src/`
 5. Commit con mensajes descriptivos
 
-## 📄 Licencia
-
-Propiedad de Audifarma.
-
----
-
-**Desarrollado para Audifarma - Optimizando la última milla farmacéutica**
