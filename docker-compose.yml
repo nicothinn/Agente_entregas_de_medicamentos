@@ -1,0 +1,31 @@
+services:
+  pharma-schedule-ai:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: pharma-schedule-ai
+    ports:
+      - "8501:8501"
+    environment:
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+    volumes:
+      # Usar volúmenes nombrados para evitar problemas con paths compartidos
+      # Los datos se guardan en volúmenes de Docker (persisten aunque elimines el contenedor)
+      - pharma_data:/app/data
+      - pharma_logs:/app/logs
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "python", "-c", "import requests; requests.get('http://localhost:8501/_stcore/health')"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  pharma_data:
+    driver: local
+    name: pharma_schedule_data
+  pharma_logs:
+    driver: local
+    name: pharma_schedule_logs
+
